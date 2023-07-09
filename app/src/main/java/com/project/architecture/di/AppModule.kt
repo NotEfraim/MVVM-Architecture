@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import com.project.architecture.R
 import com.project.architecture.data.remote.ApiService
 import com.project.architecture.data.repository.MainRepository
-import com.project.architecture.ui.MyApplication
+import com.project.architecture.MyApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +20,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideAppContext(@ApplicationContext app: Context) : MyApplication{
+    fun provideAppContext(@ApplicationContext app: Context) : MyApplication {
         return app as MyApplication
     }
 

@@ -1,4 +1,4 @@
-package com.project.architecture.ui
+package com.project.architecture
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
