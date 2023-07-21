@@ -11,7 +11,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class MyApplication : Application(), LifecycleObserver {
 
-    private val lifeCycleEventObserver = LifecycleEventObserver{ source, event ->
+    private val lifeCycleEventObserver = LifecycleEventObserver{ _, event ->
         when(event){
             Lifecycle.Event.ON_START -> {
 
