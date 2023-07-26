@@ -1,6 +1,8 @@
 package com.project.architecture.di
 
+import android.content.SharedPreferences
 import com.project.architecture.data.remote.ApiService
+import com.project.architecture.utils.HttpInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,12 +19,15 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient() : OkHttpClient{
+    fun provideHttpClient(
+        sharedPreferences: SharedPreferences
+    ) : OkHttpClient{
         return OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
+            .addInterceptor(HttpInterceptor(sharedPreferences))
             .build()
     }
 
@@ -37,7 +42,7 @@ class NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ) : Retrofit{
         return Retrofit.Builder()
-            .baseUrl("https://dummyjson.com/")
+            .baseUrl("https://google.com/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
